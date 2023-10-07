@@ -1,0 +1,29 @@
+DML
+//
+
+INSERT INTO jenis_produk VALUES ('','Elektronik'), ('','Furniture'), ('', 'Makanan'), ('','Minuman');
+
+//
+INSERT INTO produk (nama, harga, stok, idjenis, foto) VALUES
+('TV',2000000,3,1,'	tv.jpg'),
+ ('Meja',1000000,3,2,'meja.jpg');
+
+ //update
+ UPDATE produk SET nama = 'TV LCD', harga = 4000000 WHERE id = 1;
+
+ //delete
+ DELETE FROM produk WHERE id = 2;
+
+ //select
+ SELECT nama, harga FROM produk;
+
+ //
+ SELECT nama, harga, stok FROM produk WHERE stok < 40;
+
+ //mencari produk yang stok nya lebih dari kecil 10
+ SELECT * FROM produk WHERE stok <=10 ;
+
+//menampilkan urutan produk dari yang terbesar sampai kecil 
+SELECT * FROM produk ORDER BY harga DESC;
+
+//menampilkan urutan produk ORDER BY harga ASC;
