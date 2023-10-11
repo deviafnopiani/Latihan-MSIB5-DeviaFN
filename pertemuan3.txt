@@ -1,0 +1,56 @@
+//membuat tabel kartu
+CREATE TABLE kartu (
+    id integer AUTO_INCREMENT PRIMARY KEY,
+    kode varchar(6) UNIQUE,
+    nama varchar(30) NOT NULL,
+    diskon double DEFAULT 0,
+    iuran double DEFAULT 0);
+
+    //membuat tabel yang references ke tabel kartu
+    CREATE TABLE pelanggan (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    kode varchar(10) UNIQUE,
+    nama varchar(45),
+    jk char(1),
+    tmp_lahir varchar(30),
+    tgl_lahir date,
+    email varchar(45),
+    kartu_id int NOT null REFERENCES kartu(id));
+
+    CREATE TABLE pesanan (
+    id int NOT null AUTO_INCREMENT PRIMARY KEY,
+    tanggal date,
+    total double,
+    pelanggan_id int NOT null REFERENCES pelanggan(id));
+
+    CREATE TABLE pembayaran (
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    noikuitansi varchar(10) UNIQUE,
+    tanggal date,
+    jumlah double,
+    ke int,
+    pesanan_id NOT  null REFERENCES pesanan(id));
+
+   CREATE table produk (
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    kode varchar(10),
+    nama varchar(45),
+    harga_beli double,
+    harga_jual double,
+    stok int,
+    min_stok int,
+    jenis_produk_id int not null REFERENCES jenis_produk(id));
+
+    INSERT INTO jenis_produk VALUES
+('', 'Elektronik'),
+('', 'Furniture'),
+('', 'Makanan'),
+('', 'Minuman'),
+('', 'Komputer');
+
+INSERT INTO produk (kode, nama, harga_beli, harga_jual, stok, min_stok, jenis_produk_id) VALUES
+('TV01', 'Televisi 21 inch', 3500000, 5040000, 5, 2, 1),
+('TV02', 'Televisi 40 inch', 7000000, 9600000, 4, 2, 1);
+
+
+SELECT kode, nama, stok FROM produk WHERE stok = 4;
