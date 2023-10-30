@@ -12,7 +12,7 @@ $data = [
 $obj = new Member();
 $rs = $obj->cekLogin($data);
 
-if(empty($rs)){
+if(!empty($rs)){
     $_SESSION['MEMBER'] = $rs;
     header('Location:admin/index.php?url=produk');
 }else{

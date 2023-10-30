@@ -1,6 +1,9 @@
 <?php
 $model = new Jenis_produk();
 $data_jenisProduk = $model->dataJenis();
+if($sesi['role'] != 'staff'){
+
+
 ?>
 
 
@@ -68,3 +71,7 @@ $data_jenisProduk = $model->dataJenis();
                         </div>
                     </div>
                 </main>
+                <?php } else { ?>
+                <h1 align="center">Halaman Kosong</h1>
+
+                <?php } ?>

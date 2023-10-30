@@ -17,7 +17,7 @@ include_once 'menu.php';
     <!-- <h1>Selamat Datang di Halaman Admin</h1> --
     //yang mempunyai extension .php -->
     <?php
-    $url = $_GET['url'];
+    $url = !isset ($_GET['url']) ? 'dashboard' : $_GET['url'];
     if($url == 'dashboard'){
         include_once 'dashboard.php';
     }else if(!empty($url)){

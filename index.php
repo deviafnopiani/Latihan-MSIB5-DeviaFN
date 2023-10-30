@@ -1,5 +1,7 @@
 <?php
 session_start();
+global $member;
+global $role;
 include_once 'admin/koneksi.php';
 include_once 'models/Member.php';
 global $member;
